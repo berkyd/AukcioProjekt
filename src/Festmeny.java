@@ -7,7 +7,9 @@ public class Festmeny {
         this.stilus = stilus;
     }
 
+
     public Festmeny(String sor) {
+
     }
 
     public String getFesto() {
@@ -37,21 +39,30 @@ public class Festmeny {
     public void setElkelt(boolean elkelt) {
         this.elkelt = elkelt;
     }
-    public void licit(int mertek){
 
-    };
-    public void licit(){
-        int ossz = 100;
-        if(licitekSzama<0){
-            licitekSzama++;
-            legutolsoLicitIdeje=LocalDateTime.now();
+    public void licit(int mertek) {
+        if (elkelt) {
+            System.err.println("Bezárult az aukció.");
+            return;
         }
-        if(licitekSzama>0){
-            ossz=(int)(legmagasabbLicit*1.10);
+
+    }
+
+
+
+    public void licit() {
+        int ossz = 100;
+        if (licitekSzama < 0) {
             licitekSzama++;
-            legutolsoLicitIdeje=LocalDateTime.now();
+            legutolsoLicitIdeje = LocalDateTime.now();
+        }
+        if (licitekSzama > 0) {
+            ossz = (int) (legmagasabbLicit * 1.10);
+            licitekSzama++;
+            legutolsoLicitIdeje = LocalDateTime.now();
         }
     }
+
     String cim;
     String festo;
     String stilus;
@@ -59,4 +70,5 @@ public class Festmeny {
     int legmagasabbLicit = 0;
     LocalDateTime legutolsoLicitIdeje;
     boolean elkelt = false;
+
 }
